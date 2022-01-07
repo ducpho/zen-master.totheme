@@ -1,1 +1,9 @@
 .DS_Store
+
+# scripts
+*.rb
+
+# media files
+*.m4a
+*.wav
+*.mp3
