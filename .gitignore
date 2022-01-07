@@ -2,8 +2,3 @@
 
 # scripts
 *.rb
-
-# media files
-*.m4a
-*.wav
-*.mp3
