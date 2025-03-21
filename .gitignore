@@ -1,4 +1,9 @@
-.DS_Store
+# keep videos out of git
+Documents/videos/
+Documents/videos.js
 
 # scripts
 *.rb
+
+# general
+.DS_Store

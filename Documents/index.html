@@ -4,8 +4,6 @@
 <meta charset="utf-8">
 <script>
   const options = {
-    videoCount: 39,
-    videoExtension: "mp4",
     questions: [
       "Do you have a body?",
       "What are you doing?",
@@ -14,6 +12,7 @@
     ]
   }
 </script>
+<script src="videos.js"></script>
 <title>Zen master</title>
 
 <style>
@@ -65,7 +64,7 @@
       return options.questions[currentQuestionNumber];
     };
 
-    const currentVideoNumber = () => {
+    const currentVideo = () => {
       var currentIndex = Math.floor(Math.random()*toShow.length);
       return toShow.splice(currentIndex, 1);
     };
@@ -76,11 +75,11 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       if(!toShow || !toShow.length) {
-        toShow = Array.apply(null, {length: options.videoCount}).map(Number.call, Number);
+        toShow = options.videos;
       }
 
       textElement.innerHTML = currentQuestion();
-      videoElement.src = `videos/${currentVideoNumber()}.${options.videoExtension}`;
+      videoElement.src = currentVideo();
       videoElement.volume = 0.1;
 
       localStorage.setItem('toShow', JSON.stringify(toShow));
