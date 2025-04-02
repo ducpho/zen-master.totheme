@@ -71,19 +71,20 @@
 
     const textElement = document.getElementById('text');
     const videoElement = document.getElementById('video');
-    let toShow = JSON.parse(localStorage.getItem('toShow'));
 
-    document.addEventListener("DOMContentLoaded", () => {
-      if(!toShow || !toShow.length) {
+    let toShow = JSON.parse(localStorage.getItem('toShow'));
+    let lastUpdated = localStorage.getItem('lastUpdated');
+    if((!toShow || !toShow.length) || options.lastUpdated > lastUpdated) {
         toShow = options.videos;
+        localStorage.setItem('lastUpdated', options.lastUpdated);
       }
 
+    document.addEventListener("DOMContentLoaded", () => {
       textElement.innerHTML = currentQuestion();
       videoElement.src = currentVideo();
       videoElement.volume = 0.1;
 
       localStorage.setItem('toShow', JSON.stringify(toShow));
-      console.log(toShow);
     });
   }());
 </script>
